@@ -1,0 +1,18 @@
+{
+  "APP_NAME": "Find Me Project",
+  "LOADING": "Carregando",
+  "SIGN_IN": "Entrar",
+  "SIGN_UP": "Registrar",
+  "BACK": "Voltar",
+  "EMAIL": "Email",
+  "NICKNAME": "Apelido",
+  "PASSWORD": "Senha",
+  "CONFIRM_PASSWORD": "Confirmar senha",
+  "FORGOT_PASSWORD": "Esqueci minha senha",
+  "NAME": "Nome",
+  "BIRTH_DATE": "Data de nascimento",
+  "RECOVER_PASSWORD": "Recuperar senha",
+  "RECOVER_PASSWORD_SUBTITLE": "Solicite um código de recuperação para alterar a senha de acesso",
+  "CODE": "Código",
+  "REQUEST_RECOVER_CODE": "Solicitar código de recuperação"
+}

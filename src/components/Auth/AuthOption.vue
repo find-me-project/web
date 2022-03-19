@@ -4,7 +4,12 @@
       {{$t('SIGN_IN')}}
     </v-btn>
 
-    <v-dialog v-model='signInDialogIsVisible' persistent fullscreen>
+    <v-dialog
+      v-model='signInDialogIsVisible'
+      persistent
+      fullscreen
+      style='z-index: 9999999'
+    >
       <v-app-bar
         absolute
         collapse

@@ -68,7 +68,7 @@
 
 <script>
   export default {
-    name: 'SignIn',
+    name: 'AuthSignIn',
     data: function () {
       return {
         rules: {

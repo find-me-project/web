@@ -52,11 +52,11 @@
   import axios from 'axios';
 
   export default {
-    name: 'SignIn',
+    name: 'AuthPage',
     components: {
-      SignInStep: () => import('@/components/Auth/SignIn.vue'),
-      SignInRecoverPasswordStep: () => import('@/components/Auth/SignInRecoverPassword.vue'),
-      SignUpStep: () => import('@/components/Auth/SignUp.vue'),
+      SignInStep: () => import('./AuthSignIn.vue'),
+      SignInRecoverPasswordStep: () => import('./AuthSignInRecoverPassword.vue'),
+      SignUpStep: () => import('./AuthSignUp.vue'),
     },
     data: function () {
       return {

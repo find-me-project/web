@@ -7,6 +7,7 @@ Vue.use(VueRouter);
 
 export const route = {
   home: 'Home',
+  profile: 'Profile',
 };
 
 const routes: RouteConfig[] = [
@@ -15,14 +16,11 @@ const routes: RouteConfig[] = [
     name: route.home,
     component: Home,
   },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: async () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-  // },
+  {
+    path: '/profile',
+    name: route.profile,
+    component: async () => import(/* webpackChunkName: "profile" */ '@/views/Profile/Profile.vue'),
+  },
 ];
 
 const router = new VueRouter({

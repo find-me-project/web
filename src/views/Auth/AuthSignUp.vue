@@ -110,7 +110,7 @@
   import { signUp } from '@/API/Auth';
 
   export default {
-    name: 'SignUp',
+    name: 'AuthSignUp',
     data: function () {
       return {
         formIsValid: true,

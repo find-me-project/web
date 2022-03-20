@@ -3,6 +3,7 @@
     <v-btn v-if='!isAuthenticated' depressed outlined @click='openSignInDialog'>
       {{$t('SIGN_IN')}}
     </v-btn>
+
     <auth-option-user-avatar v-else />
 
     <v-dialog
@@ -33,7 +34,7 @@
         </v-tooltip>
       </v-app-bar>
 
-      <sign-in v-if='signInDialogIsVisible' @close='closeSigInDialog' />
+      <auth v-if='signInDialogIsVisible' @close='closeSigInDialog' />
     </v-dialog>
   </div>
 </template>
@@ -44,7 +45,7 @@
   export default {
     name: 'AuthOption',
     components: {
-      SignIn: () => import('@/views/Auth/SignIn.vue'),
+      Auth: () => import('@/views/Auth/Auth.vue'),
       AuthOptionUserAvatar: () => import('./AuthOptionUserAvatar.vue'),
     },
     data: function () {

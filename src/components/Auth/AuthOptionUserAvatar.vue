@@ -48,7 +48,7 @@
         <v-divider />
 
         <v-list dense class='pa-0'>
-          <v-list-item>
+          <v-list-item @click='navigateTo(route.profile)'>
             <v-list-item-content>
               <v-list-item-title>
                 {{$t('PROFILE')}}
@@ -81,12 +81,14 @@
 
 <script>
   import { mapGetters } from 'vuex';
+  import { route } from '@/router';
 
   export default {
     name: 'AuthOptionUserAvatar',
     data: function () {
       return {
         menu: false,
+        route: route,
       };
     },
     computed: {
@@ -97,6 +99,15 @@
     methods: {
       signOut: async function () {
         await this.$store.dispatch('auth/signOut');
+
+        if (this.$router.currentRoute.name !== this.route.home) {
+          this.$router.push({ name: this.route.home });
+        }
+      },
+      navigateTo: function (name) {
+        if (this.$router.currentRoute.name !== name) {
+          this.$router.push({ name: name });
+        }
       },
     },
   };

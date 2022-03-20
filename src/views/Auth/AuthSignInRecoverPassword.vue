@@ -97,7 +97,7 @@
   import { recoverPassword, requestRecoverPassword } from '@/API/Auth';
 
   export default {
-    name: 'SignInRecoverPassword',
+    name: 'AuthSignInRecoverPassword',
     data: function () {
       return {
         rules: {

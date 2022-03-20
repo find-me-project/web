@@ -1,11 +1,26 @@
 <template>
   <v-app-bar
     app
-    dark
-    color='primary'
     style='margin-bottom: 64px'
+    elevation='0'
   >
-    {{$t('APP_NAME')}}
+    <v-app-bar-title>
+      <v-btn
+        depressed
+        text
+        icon
+        @click='goToHome'
+      >
+        <v-tooltip right>
+          <template v-slot:activator='{ on }'>
+            <v-icon color='primary' v-on='on'>
+              mdi-home
+            </v-icon>
+          </template>
+          {{$t('HOME')}}
+        </v-tooltip>
+      </v-btn>
+    </v-app-bar-title>
 
     <v-spacer />
 
@@ -25,6 +40,13 @@
       return {
         route: route,
       };
+    },
+    methods: {
+      goToHome: function () {
+        if (this.$router.currentRoute.name !== this.route.home) {
+          this.$router.push({ name: this.route.home });
+        }
+      },
     },
   };
 </script>

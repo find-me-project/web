@@ -1,6 +1,12 @@
 <template>
   <div>
-    <v-btn v-if='!isAuthenticated' depressed outlined @click='openSignInDialog'>
+    <v-btn
+      v-if='!isAuthenticated'
+      depressed
+      outlined
+      color='primary'
+      @click='openSignInDialog'
+    >
       {{$t('SIGN_IN')}}
     </v-btn>
 

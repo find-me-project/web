@@ -56,3 +56,46 @@ export async function recoverPassword (email: string, code: string, password: st
     }
   });
 }
+
+export async function updatePerson (name: string, birthDate: Date): Promise<AxiosPromise> {
+  return axios({
+    url: 'person',
+    method: 'PUT',
+    withCredentials: true,
+    data: {
+      name: name,
+      birthDate: birthDate,
+    }
+  });
+}
+
+export async function updatePassword (currentPassword: string, newPassword: string): Promise<AxiosPromise> {
+  return axios({
+    url: 'account/password',
+    method: 'PATCH',
+    withCredentials: true,
+    data: {
+      currentPassword: currentPassword,
+      newPassword: newPassword,
+    }
+  });
+}
+
+export async function requestActivationCode (): Promise<AxiosPromise> {
+  return axios({
+    url: 'account/activate',
+    method: 'PATCH',
+    withCredentials: true,
+  });
+}
+
+export async function activateAccount (code: string): Promise<AxiosPromise> {
+  return axios({
+    url: 'account/activate',
+    method: 'POST',
+    withCredentials: true,
+    data: {
+      code: code,
+    }
+  });
+}

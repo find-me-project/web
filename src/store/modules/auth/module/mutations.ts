@@ -1,5 +1,5 @@
 import type { MutationTree } from 'vuex';
-import type { AccountType, AuthStateType } from './state';
+import type { AccountType, AuthStateType, PersonType } from './state';
 
 const mutations: MutationTree<AuthStateType> = {
   setAuthentication: function (state: AuthStateType, value: boolean): void {
@@ -10,6 +10,11 @@ const mutations: MutationTree<AuthStateType> = {
   },
   setAccount: function (state: AuthStateType, value?: AccountType): void {
     state.account = value;
+  },
+  updatePerson: function (state: AuthStateType, value: PersonType): void {
+    if (state.account?.person) {
+      state.account.person = value;
+    }
   }
 };
 

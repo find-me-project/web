@@ -1,7 +1,7 @@
 import { signIn, signOut } from '@/API/Auth';
 import type { RootState } from '@/store';
 import type { ActionContext, ActionTree } from 'vuex';
-import type { AuthStateType } from './state';
+import type { AuthStateType, PersonType } from './state';
 
 const actions: ActionTree<AuthStateType, RootState> = {
   handlerAuthentication: function ({commit}: ActionContext<AuthStateType, RootState>, payload: Readonly<{ value: boolean, }>): void {
@@ -39,6 +39,9 @@ const actions: ActionTree<AuthStateType, RootState> = {
     await signOut();
 
     await dispatch('handlerAuthentication', { value: false });
+  },
+  updatePerson: function ({commit}: ActionContext<AuthStateType, RootState>, payload: PersonType): void {
+    commit('updatePerson', payload);
   }
 };
 

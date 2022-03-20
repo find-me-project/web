@@ -17,5 +17,14 @@
   "REQUEST_RECOVER_CODE": "Solicitar código",
   "REQUIRED": "Campo obrigatório",
   "PROFILE": "Perfil",
-  "SIGN_OUT": "Desconectar"
+  "SIGN_OUT": "Desconectar",
+  "HOME": "Início",
+  "UPDATE_PERSON_INFO": "Atualizar dados",
+  "SAVE": "Salvar",
+  "CURRENT_PASSWORD": "Senha atual",
+  "NEW_PASSWORD": "Nova senha",
+  "UPDATE_PASSWORD": "Alterar senha",
+  "ACTIVATE_ACCOUNT": "Ativar conta",
+  "REQUEST_ACTIVATION_CODE": "Solicitar novo código",
+  "ACTIVATE": "Ativar"
 }

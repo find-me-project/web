@@ -5,11 +5,16 @@
         cols='12'
         xs='12'
         sm='12'
-        md='8'
-        lg='8'
-        xl='8'
+        md='12'
+        lg='9'
+        xl='9'
       >
-        PROFILE
+        <v-row no-gutters>
+          <profile-info />
+          <profile-config-person />
+          <profile-config-password />
+          <profile-config-activate />
+        </v-row>
       </v-col>
     </v-row>
   </v-container>
@@ -18,5 +23,11 @@
 <script>
   export default {
     name: 'ProfilePage',
+    components: {
+      ProfileInfo: () => import('./ProfileInfo.vue'),
+      ProfileConfigPerson: () => import('./ProfileConfigPerson.vue'),
+      ProfileConfigPassword: () => import('./ProfileConfigPassword.vue'),
+      ProfileConfigActivate: () => import('./ProfileConfigActivate.vue'),
+    },
   };
 </script>

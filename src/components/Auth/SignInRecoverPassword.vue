@@ -9,8 +9,10 @@
     </v-card-subtitle>
 
     <v-card-text>
-      <v-form v-if='requestRecoverStep'>
+      <v-form v-if='requestRecoverStep' ref='requestStep' v-model='requestStepFormIsValid'>
         <v-text-field
+          v-model='account.email'
+          :rules='[rules.required]'
           dense
           outlined
           hide-details
@@ -28,8 +30,10 @@
 
       </v-form>
 
-      <v-form v-else>
+      <v-form v-else ref='recoverStep' v-model='recoverStepFormIsValid'>
         <v-text-field
+          v-model='account.email'
+          :rules='[rules.required]'
           dense
           outlined
           hide-details
@@ -40,6 +44,8 @@
           {{$t('CODE')}}
         </h5>
         <v-otp-input
+          v-model='account.code'
+          :rules='[rules.required]'
           length='8'
           type='number'
           dense
@@ -48,23 +54,14 @@
         />
 
         <v-text-field
+          v-model='account.password'
+          :rules='[rules.required]'
           dense
           outlined
           hide-details
           class='mt-3'
           :type='showPassword ? "text" : "password"'
           :label='$t("PASSWORD")'
-          :append-icon='showPassword ? "mdi-eye" : "mdi-eye-off"'
-          @click:append='togglePasswordVisibility'
-        />
-
-        <v-text-field
-          dense
-          outlined
-          hide-details
-          class='mt-3'
-          :type='showPassword ? "text" : "password"'
-          :label='$t("CONFIRM_PASSWORD")'
           :append-icon='showPassword ? "mdi-eye" : "mdi-eye-off"'
           @click:append='togglePasswordVisibility'
         />
@@ -77,6 +74,7 @@
         block
         depressed
         color='primary'
+        @click='recoverPassword'
       >
         {{$t('RECOVER_PASSWORD')}}
       </v-btn>
@@ -96,13 +94,25 @@
 </template>
 
 <script>
+  import { recoverPassword, requestRecoverPassword } from '@/API/Auth';
+
   export default {
     name: 'SignInRecoverPassword',
     data: function () {
       return {
+        rules: {
+          required: (value) => !!value || this.$t('REQUIRED'),
+        },
         byEmail: true,
         showPassword: false,
         requestRecoverStep: true,
+        requestStepFormIsValid: true,
+        recoverStepFormIsValid: true,
+        account: {
+          email: undefined,
+          code: undefined,
+          password: undefined,
+        },
       };
     },
     methods: {
@@ -112,8 +122,31 @@
       signIn: function () {
         this.$emit('sign-in');
       },
-      requestRecoverCode: function () {
+      requestRecoverCode: async function () {
+        this.requestStepFormIsValid = this.$refs.requestStep.validate();
+        if (!this.requestStepFormIsValid) {
+          return;
+        }
+
+        await requestRecoverPassword(this.account.email);
+
         this.requestRecoverStep = false;
+      },
+      recoverPassword: async function () {
+        this.recoverStepFormIsValid = this.$refs.recoverStep.validate();
+        if (!this.recoverStepFormIsValid) {
+          return;
+        }
+
+        const {
+          email,
+          code,
+          password,
+        } = this.account;
+
+        await recoverPassword(email, code, password);
+
+        this.signIn();
       },
     },
   };

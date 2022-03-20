@@ -1,0 +1,103 @@
+<template>
+  <div>
+    <v-menu
+      v-model='menu'
+      :close-on-content-click='false'
+      :nudge-width='200'
+      offset-y
+      style='z-index: 99999'
+    >
+      <template v-slot:activator='{ on, attrs }'>
+        <v-btn
+          icon
+          v-bind='attrs'
+          class='mr-1'
+          v-on='on'
+        >
+          <v-icon>
+            mdi-account
+          </v-icon>
+        </v-btn>
+      </template>
+
+      <v-card>
+        <v-list dense>
+          <v-list-item>
+            <v-list-item-avatar>
+              <v-icon>
+                mdi-account
+              </v-icon>
+            </v-list-item-avatar>
+
+            <v-list-item-content>
+              <v-list-item-title>
+                <v-tooltip bottom>
+                  <template v-slot:activator='{ on }'>
+                    <span v-on='on'>
+                      {{account.person.name}}
+                    </span>
+                  </template>
+                  <span>{{account.person.name}}</span>
+                </v-tooltip>
+              </v-list-item-title>
+              <v-list-item-subtitle>{{account.email}}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+
+        <v-divider />
+
+        <v-list dense class='pa-0'>
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title>
+                {{$t('PROFILE')}}
+              </v-list-item-title>
+            </v-list-item-content>
+            <v-list-item-avatar>
+              <v-icon>
+                mdi-account-outline
+              </v-icon>
+            </v-list-item-avatar>
+          </v-list-item>
+
+          <v-list-item @click='signOut'>
+            <v-list-item-content>
+              <v-list-item-title class='red--text'>
+                {{$t('SIGN_OUT')}}
+              </v-list-item-title>
+            </v-list-item-content>
+            <v-list-item-avatar>
+              <v-icon color='error'>
+                mdi-logout
+              </v-icon>
+            </v-list-item-avatar>
+          </v-list-item>
+        </v-list>
+      </v-card>
+    </v-menu>
+  </div>
+</template>
+
+<script>
+  import { mapGetters } from 'vuex';
+
+  export default {
+    name: 'AuthOptionUserAvatar',
+    data: function () {
+      return {
+        menu: false,
+      };
+    },
+    computed: {
+      ...mapGetters('auth', [
+        'account',
+      ]),
+    },
+    methods: {
+      signOut: async function () {
+        await this.$store.dispatch('auth/signOut');
+      },
+    },
+  };
+</script>

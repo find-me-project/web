@@ -15,5 +15,7 @@
   "RECOVER_PASSWORD_SUBTITLE": "Solicite um código de recuperação para alterar a senha de acesso",
   "CODE": "Código",
   "REQUEST_RECOVER_CODE": "Solicitar código",
-  "REQUIRED": "Campo obrigatório"
+  "REQUIRED": "Campo obrigatório",
+  "PROFILE": "Perfil",
+  "SIGN_OUT": "Desconectar"
 }

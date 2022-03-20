@@ -1,4 +1,4 @@
-import { signIn } from '@/API/Auth';
+import { signIn, signOut } from '@/API/Auth';
 import type { RootState } from '@/store';
 import type { ActionContext, ActionTree } from 'vuex';
 import type { AuthStateType } from './state';
@@ -35,6 +35,11 @@ const actions: ActionTree<AuthStateType, RootState> = {
       await dispatch('handlerAuthentication', { value: true });
     }
   },
+  signOut: async function ({dispatch}: ActionContext<AuthStateType, RootState>): Promise<void> {
+    await signOut();
+
+    await dispatch('handlerAuthentication', { value: false });
+  }
 };
 
 export default actions;

@@ -1,8 +1,9 @@
 <template>
   <div>
-    <v-btn depressed outlined @click='openSignInDialog'>
+    <v-btn v-if='!isAuthenticated' depressed outlined @click='openSignInDialog'>
       {{$t('SIGN_IN')}}
     </v-btn>
+    <auth-option-user-avatar v-else />
 
     <v-dialog
       v-model='signInDialogIsVisible'
@@ -38,15 +39,23 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
+
   export default {
     name: 'AuthOption',
     components: {
       SignIn: () => import('@/views/Auth/SignIn.vue'),
+      AuthOptionUserAvatar: () => import('./AuthOptionUserAvatar.vue'),
     },
     data: function () {
       return {
         signInDialogIsVisible: false,
       };
+    },
+    computed: {
+      ...mapGetters('auth', [
+        'isAuthenticated',
+      ]),
     },
     methods: {
       openSignInDialog: function () {

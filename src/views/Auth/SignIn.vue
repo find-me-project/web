@@ -5,8 +5,8 @@
     class='pa-0 white'
   >
     <v-col
-      sm='7'
-      class='pl-0 py-0'
+      md='7'
+      class='pl-0 py-0 hidden-sm-and-down'
       style='height: 100%'
     >
       <v-container
@@ -25,10 +25,11 @@
         </v-row>
       </v-container>
     </v-col>
-    <v-col sm='5'>
+    <v-col sm='12' md='5'>
       <v-row align='center' justify='center'>
         <sign-in-step
           v-if='step === 0'
+          @close='close'
           @sign-up='setSignUpStep'
           @recover-password='setRecoverPasswordStep'
         />
@@ -72,6 +73,9 @@
       setSignUpStep: function () {
         this.step = 2;
       },
+      close: function () {
+        this.$emit('close');
+      },
       signIn: async function () {
         this.$store.dispatch('loading/toggleLoading', { value: true });
 
@@ -81,7 +85,6 @@
           withCredentials: true,
         });
 
-        this.$store.dispatch('auth/handlerAuthentication', { value: true });
         this.$store.dispatch('loading/toggleLoading', { value: true });
       },
     },

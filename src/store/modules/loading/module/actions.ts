@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 import type { RootState } from '@/store';
 import type {ActionContext, ActionTree} from 'vuex';
 import type {LoadingStateType} from './state';

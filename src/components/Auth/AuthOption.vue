@@ -8,7 +8,7 @@
       v-model='signInDialogIsVisible'
       persistent
       fullscreen
-      style='z-index: 9999999'
+      style='z-index: 9999'
     >
       <v-app-bar
         absolute
@@ -21,7 +21,7 @@
           <template v-slot:activator='{ on }'>
             <v-btn
               icon
-              dark
+              :color='$vuetify.breakpoint.mobile ? "primary" : "white"'
               v-on='on'
               @click.native='closeSigInDialog'
             >
@@ -32,7 +32,7 @@
         </v-tooltip>
       </v-app-bar>
 
-      <sign-in @close='closeSigInDialog' />
+      <sign-in v-if='signInDialogIsVisible' @close='closeSigInDialog' />
     </v-dialog>
   </div>
 </template>

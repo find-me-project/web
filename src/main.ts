@@ -8,6 +8,7 @@ import i18n from './i18n';
 import 'toastr/toastr.scss';
 import './assets/styles/global.scss';
 import 'leaflet/dist/leaflet.css';
+import './util/request';
 
 Vue.config.productionTip = false;
 

@@ -1,9 +1,12 @@
 /* eslint-disable */
-import type { AxiosResponse, AxiosError } from 'axios';
+import type { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import axios from 'axios';
 import store from '@/store';
 import { showError, showWarning, showSuccess } from '../notification';
 import i18n from '@/i18n';
+import { config } from 'dotenv';
+
+config();
 
 const FORBIDDEN = 403;
 
@@ -50,3 +53,18 @@ axios.interceptors.response.use((response: AxiosResponse) => {
 
   throw new Error(error.message);
 });
+
+axios.interceptors.request.use((request: AxiosRequestConfig) => {
+  if (request.withCredentials) {
+    const token = store.getters['auth/token'];
+    if (token) {
+      if (!request.headers) {
+        request.headers = {};
+      }
+
+      request.headers.Authorization = token;
+    }
+  }
+
+  return request;
+})

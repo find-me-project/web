@@ -119,6 +119,7 @@ module.exports = {
         ],
         '@typescript-eslint/prefer-readonly-parameter-types': 0,
         '@typescript-eslint/no-unsafe-assignment': 0,
+        '@typescript-eslint/strict-boolean-expressions': 0,
       },
     },
     // Jest

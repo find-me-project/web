@@ -5,15 +5,19 @@
     </v-card-title>
 
     <v-card-text>
-      <v-form>
+      <v-form ref='form' v-model='formIsValid'>
         <v-text-field
+          v-model='account.data'
+          :rules='[rules.required]'
           dense
           outlined
           hide-details
-          :label='$t(byEmail ? "EMAIL" : "NICKNAME")'
+          :label='$t(signInByNickname ? "NICKNAME" : "EMAIL")'
         />
 
         <v-text-field
+          v-model='account.password'
+          :rules='[rules.required]'
           dense
           outlined
           hide-details
@@ -43,6 +47,7 @@
         block
         depressed
         color='primary'
+        @click='signIn'
       >
         {{$t('SIGN_IN')}}
       </v-btn>
@@ -66,13 +71,35 @@
     name: 'SignIn',
     data: function () {
       return {
-        byEmail: true,
+        rules: {
+          required: (value) => !!value || this.$t('REQUIRED'),
+        },
+        signInByNickname: false,
         showPassword: false,
+        account: {
+          data: undefined,
+          password: undefined,
+        },
+        formIsValid: true,
       };
     },
     methods: {
       togglePasswordVisibility: function () {
         this.showPassword = !this.showPassword;
+      },
+      signIn: async function () {
+        this.formIsValid = this.$refs.form.validate();
+        if (!this.formIsValid) {
+          return;
+        }
+
+        await this.$store.dispatch('auth/signIn', {
+          accessData: this.account.data,
+          password: this.account.password,
+          isNickname: this.signInByNickname,
+        });
+
+        this.$emit('close');
       },
       signUp: function () {
         this.$emit('sign-up');

@@ -1,11 +1,11 @@
 <template>
   <v-card flat width='60%'>
     <v-card-title>
-      {{$t('RECOVER_PASSWORD')}}
+      {{ $t('RECOVER_PASSWORD') }}
     </v-card-title>
 
     <v-card-subtitle>
-      {{$t('RECOVER_PASSWORD_SUBTITLE')}}
+      {{ $t('RECOVER_PASSWORD_SUBTITLE') }}
     </v-card-subtitle>
 
     <v-card-text>
@@ -25,9 +25,8 @@
           class='mt-3'
           @click='requestRecoverCode'
         >
-          {{$t('REQUEST_RECOVER_CODE')}}
+          {{ $t('REQUEST_RECOVER_CODE') }}
         </v-btn>
-
       </v-form>
 
       <v-form v-else ref='recoverStep' v-model='recoverStepFormIsValid'>
@@ -41,7 +40,7 @@
         />
 
         <h5 class='mt-3'>
-          {{$t('CODE')}}
+          {{ $t('CODE') }}
         </h5>
         <v-otp-input
           v-model='account.code'
@@ -76,7 +75,7 @@
         color='primary'
         @click='recoverPassword'
       >
-        {{$t('RECOVER_PASSWORD')}}
+        {{ $t('RECOVER_PASSWORD') }}
       </v-btn>
 
       <v-btn
@@ -87,7 +86,7 @@
         color='primary'
         @click='signIn'
       >
-        {{$t('SIGN_IN')}}
+        {{ $t('SIGN_IN') }}
       </v-btn>
     </v-card-text>
   </v-card>

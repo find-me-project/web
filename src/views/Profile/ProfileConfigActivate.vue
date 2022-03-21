@@ -1,13 +1,13 @@
 <template>
   <v-card width='100%' class='mt-5'>
     <v-card-title>
-      {{$t('ACTIVATE_ACCOUNT')}}
+      {{ $t('ACTIVATE_ACCOUNT') }}
     </v-card-title>
 
     <v-card-text>
       <v-form ref='form' v-model='formIsValid'>
         <h5 class='mt-3'>
-          {{$t('CODE')}}
+          {{ $t('CODE') }}
         </h5>
         <v-otp-input
           v-model='code'
@@ -28,7 +28,7 @@
         color='primary'
         @click='activateAccount'
       >
-        {{$t('ACTIVATE')}}
+        {{ $t('ACTIVATE') }}
       </v-btn>
 
       <v-btn
@@ -39,7 +39,7 @@
         class='mt-3'
         @click='requestNewActivationCode'
       >
-        {{$t('REQUEST_ACTIVATION_CODE')}}
+        {{ $t('REQUEST_ACTIVATION_CODE') }}
       </v-btn>
     </v-card-text>
   </v-card>

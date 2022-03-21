@@ -1,7 +1,7 @@
 <template>
   <v-card flat width='60%'>
     <v-card-title>
-      {{$t('SIGN_UP')}}
+      {{ $t('SIGN_UP') }}
     </v-card-title>
 
     <v-card-text>
@@ -33,7 +33,7 @@
           offset-y
           min-width='auto'
         >
-          <template v-slot:activator='{ on, attrs }'>
+          <template #activator='{ on, attrs }'>
             <v-text-field
               v-model='account.birthDate'
               :rules='[rules.required]'
@@ -45,7 +45,7 @@
               class='mt-3'
               v-bind='attrs'
               v-on='on'
-            ></v-text-field>
+            />
           </template>
           <v-date-picker
             v-model='account.birthDate'
@@ -53,7 +53,7 @@
             :max='maxDate'
             min='1950-01-01'
             @change='setBirthDate'
-          ></v-date-picker>
+          />
         </v-menu>
 
         <v-text-field
@@ -89,7 +89,7 @@
         color='primary'
         @click='signUp'
       >
-        {{$t('SIGN_UP')}}
+        {{ $t('SIGN_UP') }}
       </v-btn>
 
       <v-btn
@@ -100,7 +100,7 @@
         color='primary'
         @click='signIn'
       >
-        {{$t('SIGN_IN')}}
+        {{ $t('SIGN_IN') }}
       </v-btn>
     </v-card-text>
   </v-card>

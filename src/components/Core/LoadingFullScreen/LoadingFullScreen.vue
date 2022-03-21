@@ -20,7 +20,7 @@
         </v-row>
         <v-row no-gutters align='center' justify='center' class='mt-3'>
           <span class='title white--text font-weight-regular'>
-            {{$t('LOADING')}}
+            {{ $t('LOADING') }}
           </span>
         </v-row>
       </v-card-text>

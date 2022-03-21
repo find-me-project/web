@@ -12,12 +12,12 @@
         @click='goToHome'
       >
         <v-tooltip right>
-          <template v-slot:activator='{ on }'>
+          <template #activator='{ on }'>
             <v-icon color='primary' v-on='on'>
               mdi-home
             </v-icon>
           </template>
-          {{$t('HOME')}}
+          {{ $t('HOME') }}
         </v-tooltip>
       </v-btn>
     </v-app-bar-title>

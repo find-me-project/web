@@ -1,6 +1,7 @@
 <template>
   <v-container fluid fill-height class='pa-0'>
     <map-view />
+    <alert />
   </v-container>
 </template>
 
@@ -9,6 +10,7 @@
     name: 'HomePage',
     components: {
       MapView: () => import('@/components/Map/MapView.vue'),
+      Alert: () => import('@/components/Alert/Alert.vue'),
     },
     data: function () {
       return {

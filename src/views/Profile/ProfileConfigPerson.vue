@@ -1,7 +1,7 @@
 <template>
   <v-card width='100%' class='mt-5'>
     <v-card-title>
-      {{$t('UPDATE_PERSON_INFO')}}
+      {{ $t('UPDATE_PERSON_INFO') }}
     </v-card-title>
 
     <v-card-text>
@@ -23,7 +23,7 @@
           offset-y
           min-width='auto'
         >
-          <template v-slot:activator='{ on, attrs }'>
+          <template #activator='{ on, attrs }'>
             <v-text-field
               v-model='person.birthDate'
               :rules='[rules.required]'
@@ -35,7 +35,7 @@
               class='mt-3'
               v-bind='attrs'
               v-on='on'
-            ></v-text-field>
+            />
           </template>
           <v-date-picker
             v-model='person.birthDate'
@@ -43,7 +43,7 @@
             :max='maxDate'
             min='1950-01-01'
             @change='setBirthDate'
-          ></v-date-picker>
+          />
         </v-menu>
       </v-form>
     </v-card-text>
@@ -55,7 +55,7 @@
         color='primary'
         @click='updatePerson'
       >
-        {{$t('SAVE')}}
+        {{ $t('SAVE') }}
       </v-btn>
     </v-card-text>
   </v-card>

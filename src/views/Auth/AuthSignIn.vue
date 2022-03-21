@@ -1,7 +1,7 @@
 <template>
   <v-card flat width='60%'>
     <v-card-title>
-      {{$t('SIGN_IN')}}
+      {{ $t('SIGN_IN') }}
     </v-card-title>
 
     <v-card-text>
@@ -36,7 +36,7 @@
             color='primary'
             @click='recoverPassword'
           >
-            {{$t('FORGOT_PASSWORD')}}
+            {{ $t('FORGOT_PASSWORD') }}
           </v-btn>
         </v-row>
       </v-form>
@@ -49,7 +49,7 @@
         color='primary'
         @click='signIn'
       >
-        {{$t('SIGN_IN')}}
+        {{ $t('SIGN_IN') }}
       </v-btn>
 
       <v-btn
@@ -60,7 +60,7 @@
         color='primary'
         @click='signUp'
       >
-        {{$t('SIGN_UP')}}
+        {{ $t('SIGN_UP') }}
       </v-btn>
     </v-card-text>
   </v-card>

@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   env: {
-    node: true,
+    browser: true,
     es6: true,
   },
   extends: [
@@ -15,12 +15,9 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
-        node: {
-            extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue'],
-        },
-        webpack: {
-            config: require.resolve('@vue/cli-service/webpack.config.js'),
-        },
+      webpack: {
+        config: require.resolve('@vue/cli-service/webpack.config.js'),
+      },
     },
   },
   rules: {
@@ -40,7 +37,7 @@ module.exports = {
     {
       files: ['*.vue', '**/*.vue', '**/*.js', '*.js'],
       extends: [
-        'plugin:vue/essential',
+        'plugin:vue/strongly-recommended',
         '@vue/airbnb',
         '@vue/typescript/recommended',
       ],
@@ -50,22 +47,7 @@ module.exports = {
         'vue/script-indent': ['error', 2, { baseIndent: 1, switchCase: 1 }],
         'vue/html-indent': ['error', 2, { baseIndent: 1 }],
         'vue/html-quotes': ['error', 'single'],
-        'vue/singleline-html-element-content-newline': 2,
         'vue/max-attributes-per-line': ['error', { singleline: 5, multiline: { max: 1 } }],
-        'vue/html-closing-bracket-newline': 2,
-        'vue/attributes-order': ['error', { order: ['DEFINITION', 'LIST_RENDERING', 'CONDITIONALS', 'RENDER_MODIFIERS', 'GLOBAL', 'UNIQUE', 'TWO_WAY_BINDING', 'OTHER_DIRECTIVES', 'OTHER_ATTR', 'EVENTS', 'CONTENT'] }],
-        'vue/prop-name-casing': 0,
-        'vue/require-prop-types': 'error',
-        'vue/require-default-prop': 'error',
-        'vue/no-multi-spaces': 'error',
-        'vue/attribute-hyphenation': 'error',
-        'vue/no-template-shadow': 'error',
-        'vue/name-property-casing': 'error',
-        'vue/mustache-interpolation-spacing': ['error', 'never'],
-        'vue/html-end-tags': 'error',
-        'vue/html-closing-bracket-spacing': 'error',
-        'vue/this-in-template': 'error',
-        'vue/no-spaces-around-equal-signs-in-attribute': 'error',
       },
     },
     // Typescript
@@ -87,10 +69,10 @@ module.exports = {
         },
       },
       parserOptions: {
-          parser: '@typescript-eslint/parser',
-          ecmaVersion: 2020,
-          project: './tsconfig.json',
-          sourceType: 'module',
+        parser: '@typescript-eslint/parser',
+        ecmaVersion: 2020,
+        project: './tsconfig.json',
+        sourceType: 'module',
       },
       rules: {
         'max-len': 0,

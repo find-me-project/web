@@ -7,7 +7,7 @@
       color='primary'
       @click='openSignInDialog'
     >
-      {{$t('SIGN_IN')}}
+      {{ $t('SIGN_IN') }}
     </v-btn>
 
     <auth-option-user-avatar v-else />
@@ -26,7 +26,7 @@
         class='ma-3'
       >
         <v-tooltip right>
-          <template v-slot:activator='{ on }'>
+          <template #activator='{ on }'>
             <v-btn
               icon
               :color='$vuetify.breakpoint.mobile ? "primary" : "white"'
@@ -36,7 +36,7 @@
               <v-icon>mdi-arrow-left</v-icon>
             </v-btn>
           </template>
-          <span>{{$t('BACK')}}</span>
+          <span>{{ $t('BACK') }}</span>
         </v-tooltip>
       </v-app-bar>
 

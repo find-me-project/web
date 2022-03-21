@@ -7,7 +7,7 @@
       offset-y
       style='z-index: 99999'
     >
-      <template v-slot:activator='{ on, attrs }'>
+      <template #activator='{ on, attrs }'>
         <v-btn
           icon
           color='primary'
@@ -33,15 +33,15 @@
             <v-list-item-content>
               <v-list-item-title>
                 <v-tooltip bottom>
-                  <template v-slot:activator='{ on }'>
+                  <template #activator='{ on }'>
                     <span v-on='on'>
-                      {{account.person.name}}
+                      {{ account.person.name }}
                     </span>
                   </template>
-                  <span>{{account.person.name}}</span>
+                  <span>{{ account.person.name }}</span>
                 </v-tooltip>
               </v-list-item-title>
-              <v-list-item-subtitle>{{account.email}}</v-list-item-subtitle>
+              <v-list-item-subtitle>{{ account.email }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -52,7 +52,7 @@
           <v-list-item @click='navigateTo(route.profile)'>
             <v-list-item-content>
               <v-list-item-title>
-                {{$t('PROFILE')}}
+                {{ $t('PROFILE') }}
               </v-list-item-title>
             </v-list-item-content>
             <v-list-item-avatar>
@@ -65,7 +65,7 @@
           <v-list-item @click='signOut'>
             <v-list-item-content>
               <v-list-item-title class='red--text'>
-                {{$t('SIGN_OUT')}}
+                {{ $t('SIGN_OUT') }}
               </v-list-item-title>
             </v-list-item-content>
             <v-list-item-avatar>

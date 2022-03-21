@@ -1,7 +1,7 @@
 <template>
   <v-card width='100%' class='mt-5'>
     <v-card-title>
-      {{$t('UPDATE_PASSWORD')}}
+      {{ $t('UPDATE_PASSWORD') }}
     </v-card-title>
 
     <v-card-text>
@@ -41,7 +41,7 @@
         color='primary'
         @click='updatePassword'
       >
-        {{$t('SAVE')}}
+        {{ $t('SAVE') }}
       </v-btn>
     </v-card-text>
   </v-card>

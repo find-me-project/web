@@ -4,7 +4,7 @@ import VuexPersistence from 'vuex-persist';
 import auth from './modules/auth';
 import type { AuthStateType } from './modules/auth/module/state';
 import Loading from './modules/loading';
-import type {LoadingStateType} from './modules/Loading/module/state';
+import type { LoadingStateType } from './modules/loading/module/state';
 
 Vue.use(Vuex);
 

@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   env: {
-    browser: true,
+    node: true,
     es6: true,
   },
   extends: [
@@ -15,6 +15,9 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
+      node: {
+        extensions: ['.ts', '.tsx', '.js', '.json'],
+      },
       webpack: {
         config: require.resolve('@vue/cli-service/webpack.config.js'),
       },

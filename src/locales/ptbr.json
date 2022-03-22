@@ -95,5 +95,16 @@
   "REQUEST_ACTIVATION_CODE": "Solicitar novo código",
   "ACTIVATE": "Ativar",
   "PERSON": "Pessoa",
-  "PET": "Animal de estimação"
+  "PET": "Animal de estimação",
+  "CLOSE": "Fechar",
+  "SELECT_IMAGE": "Selecionar imagem",
+  "ALERT_PERSON_TITLE": "Alerta pessoa desaparecida",
+  "ALERT_PET_TITLE": "Alerta animal de estimação desaparecido",
+  "DATE_DISAPPEARANCE": "Data de desaparecimento",
+  "TIME_DISAPPEARANCE": "Horário do desaparecimento",
+  "PCD_LABEL": "Pessoa com Deficiência",
+  "INFO": "Informações",
+  "LOCATION_DISAPPEARANCE": "Local do desaparecimento",
+  "SELECT_LOCATION": "Clique no mapa para selecionar o local",
+  "ADDITIONAL_INFO_OPTIONAL": "Informações adicionais (opcional)"
 }

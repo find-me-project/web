@@ -20,6 +20,7 @@
     "sweetalert2": "^11.4.5",
     "toastr": "^2.1.4",
     "vue": "^2.6.11",
+    "vue-advanced-cropper": "^1.10.1",
     "vue-i18n": "^8.26.3",
     "vue-router": "^3.2.0",
     "vue2-leaflet": "^2.7.1",

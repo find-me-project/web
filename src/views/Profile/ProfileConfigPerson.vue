@@ -84,17 +84,17 @@
         },
       };
     },
+    computed: {
+      ...mapGetters('auth', [
+        'account',
+      ]),
+    },
     watch: {
       menu: function () {
         setTimeout(() => {
           this.activePicker = 'YEAR';
         });
       },
-    },
-    computed: {
-      ...mapGetters('auth', [
-        'account',
-      ]),
     },
     mounted: function () {
       this.person.name = this.account.person.name;

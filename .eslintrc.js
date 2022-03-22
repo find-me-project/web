@@ -40,6 +40,7 @@ module.exports = {
     {
       files: ['*.vue', '**/*.vue', '**/*.js', '*.js'],
       extends: [
+        'plugin:vue/recommended',
         'plugin:vue/strongly-recommended',
         '@vue/airbnb',
         '@vue/typescript/recommended',

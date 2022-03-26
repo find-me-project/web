@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VuexPersistence from 'vuex-persist';
+import alert from './modules/alert';
+import type { AlertStateType } from './modules/alert/module/state';
 import auth from './modules/auth';
 import type { AuthStateType } from './modules/auth/module/state';
 import Loading from './modules/loading';
@@ -11,6 +13,7 @@ Vue.use(Vuex);
 export interface RootState {
   loading: LoadingStateType,
   auth: AuthStateType,
+  alert: AlertStateType,
 }
 
 const vuexLocal = new VuexPersistence<RootState>({
@@ -22,6 +25,7 @@ const store = new Vuex.Store<RootState>({
   modules: {
     loading: Loading,
     auth: auth,
+    alert: alert,
   },
   plugins: [vuexLocal.plugin],
 });

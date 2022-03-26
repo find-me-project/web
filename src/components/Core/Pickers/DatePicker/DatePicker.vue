@@ -34,7 +34,7 @@
     name: 'DatePicker',
     props: {
       value: {
-        type: Date,
+        type: String,
         default: undefined,
       },
     },
@@ -54,9 +54,6 @@
           this.activePicker = 'YEAR';
         });
       },
-      value: function () {
-        this.$emit('input', this.value);
-      },
     },
     mounted: function () {
       this.selectedDate = this.value;
@@ -64,6 +61,8 @@
     methods: {
       setDate: function (date) {
         this.$refs.menu.save(date);
+
+        this.$emit('input', this.selectedDate);
       },
     },
   };

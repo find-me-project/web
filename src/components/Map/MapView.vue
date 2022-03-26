@@ -5,10 +5,14 @@
     :max-zoom='maxZoom'
     :min-zoom='minZoom'
     :center='center'
+    @click='onClick'
   >
     <l-tile-layer :url='url' :attribution='attribution' />
-    <l-marker :lat-lng='markerLatLng' />
+    <l-marker v-if='marker' :lat-lng='marker' />
     <!-- <l-marker :lat-lng='markerLatLng' :icon='icon' /> -->
+    <div v-if='list'>
+      <l-marker v-for='item in list' :key='item._id' :lat-lng='item.location.coordinates' />
+    </div>
   </l-map>
 </template>
 
@@ -33,6 +37,20 @@
       LTileLayer: LTileLayer,
       LMarker: LMarker,
     },
+    props: {
+      marker: {
+        type: Array,
+        default: undefined,
+      },
+      center: {
+        type: Array,
+        default: () => [-25.428958, -49.269665],
+      },
+      list: {
+        type: Array,
+        default: undefined,
+      },
+    },
     data: function () {
       return {
         url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -40,14 +58,18 @@
         zoom: 14,
         maxZoom: 18,
         minZoom: 12,
-        center: [-25.428958, -49.269665],
-        markerLatLng: [-25.428958, -49.269665],
+        // markerLatLng: [-25.428958, -49.269665],
         // icon: icon({
         //   iconUrl: 'https://this-person-does-not-exist.com/img/avatar-9ec76b1040212bbe19541499955664e2.jpg',
         //   iconSize: [48, 48],
         //   iconAnchor: [16, 16],
         // }),
       };
+    },
+    methods: {
+      onClick: function (event) {
+        this.$emit('click', event);
+      },
     },
   };
 </script>

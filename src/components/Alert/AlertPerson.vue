@@ -25,38 +25,45 @@
               </v-card-title>
 
               <v-card-text class='pb-0'>
-                <v-form>
+                <v-form ref='form' v-model='formIsValid'>
                   <v-text-field
+                    v-model='alert.name'
+                    :rules='[rules.required]'
                     outlined
                     hide-details
                     dense
                     :label='$t("NAME")'
                   />
                   <date-picker
-                    v-model='person.birthDate'
+                    v-model='alert.birthDate'
+                    :rules='[rules.required]'
                     :label='$t("BIRTH_DATE")'
                   />
 
                   <v-row no-gutters justify='space-between'>
                     <v-col cols='12' sm='12' md='5'>
                       <date-picker
-                        v-model='person.dateDisappearance'
+                        v-model='alert.dateDisappearance'
+                        :rules='[rules.required]'
                         :label='$t("DATE_DISAPPEARANCE")'
                       />
                     </v-col>
                     <v-col cols='12' sm='12' md='5'>
                       <time-picker
-                        v-model='person.timeDisappearance'
+                        v-model='alert.timeDisappearance'
+                        :rules='[rules.required]'
                         :label='$t("TIME_DISAPPEARANCE")'
                       />
                     </v-col>
                   </v-row>
 
                   <v-checkbox
+                    v-model='alert.isPcd'
                     hide-details
                     :label='$t("PCD_LABEL")'
                   />
                   <v-textarea
+                    v-model='alert.additionalInfo'
                     dense
                     outlined
                     no-resize
@@ -78,10 +85,10 @@
               </v-card-subtitle>
 
               <v-card-text class='pb-0'>
-                <map-view style='width: 100%; height: 300px' />
+                <map-view :marker='marker' style='width: 100%; height: 300px' @click='setMarker' />
               </v-card-text>
 
-              <v-card-text class='pb-0'>
+              <v-card-text class='pb-0' @click='saveAlert'>
                 <v-btn
                   block
                   depressed
@@ -99,6 +106,9 @@
 </template>
 
 <script>
+  import { AlertTypeEnum } from '@/store/modules/alert/module/state';
+  import { createAlert } from '@/API/Alert';
+
   export default {
     name: 'AlertPerson',
     components: {
@@ -109,12 +119,44 @@
     },
     data: function () {
       return {
-        person: {
+        formIsValid: true,
+        rules: {
+          required: (value) => !!value || this.$t('REQUIRED'),
+        },
+        alert: {
+          name: undefined,
           birthDate: undefined,
           dateDisappearance: undefined,
           timeDisappearance: undefined,
+          isPcd: false,
+          additionalInfo: undefined,
         },
+        marker: undefined,
       };
+    },
+    methods: {
+      setMarker: function (event) {
+        this.marker = [event.latlng.lat, event.latlng.lng];
+      },
+      saveAlert: async function () {
+        this.formIsValid = this.$refs.form.validate();
+        if (!this.formIsValid) {
+          return;
+        }
+
+        await createAlert({
+          type: AlertTypeEnum.person,
+          name: this.alert.name,
+          birthDate: this.alert.birthDate,
+          disappearDate: `${this.alert.dateDisappearance} ${this.alert.timeDisappearance}`,
+          isPcd: this.alert.isPcd,
+          additionalInfo: this.alert.additionalInfo,
+          longitude: this.marker[1],
+          latitude: this.marker[0],
+        });
+
+        this.$emit('close');
+      },
     },
   };
 </script>

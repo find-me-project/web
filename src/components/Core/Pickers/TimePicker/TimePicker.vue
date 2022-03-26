@@ -44,17 +44,14 @@
         selectedTime: undefined,
       };
     },
-    watch: {
-      value: function () {
-        this.$emit('input', this.value);
-      },
-    },
     mounted: function () {
       this.selectedTime = this.value;
     },
     methods: {
       setTime: function (value) {
         this.$refs.menu.save(value);
+
+        this.$emit('input', this.selectedTime);
       },
     },
   };

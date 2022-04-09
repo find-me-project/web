@@ -3,6 +3,7 @@
     app
     style='margin-bottom: 64px'
     elevation='0'
+    clipped-left
   >
     <v-app-bar-title>
       <v-btn

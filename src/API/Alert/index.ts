@@ -28,13 +28,14 @@ export async function createAlert (alert: {
   });
 }
 
-export async function getNearbyAlerts (longitude: number, latitude: number): Promise<AxiosPromise> {
+export async function getNearbyAlerts (longitude: number, latitude: number, filterAlertType?: string): Promise<AxiosPromise> {
   return axios({
     url: 'alerts',
     method: 'GET',
     params: {
       longitude: longitude,
       latitude: latitude,
+      type: filterAlertType,
     }
   });
 }

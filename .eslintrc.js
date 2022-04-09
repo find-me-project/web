@@ -52,6 +52,7 @@ module.exports = {
         'vue/html-indent': ['error', 2, { baseIndent: 1 }],
         'vue/html-quotes': ['error', 'single'],
         'vue/max-attributes-per-line': ['error', { singleline: 5, multiline: { max: 1 } }],
+        'no-underscore-dangle': 0,
       },
     },
     // Typescript
@@ -106,6 +107,7 @@ module.exports = {
         '@typescript-eslint/prefer-readonly-parameter-types': 0,
         '@typescript-eslint/no-unsafe-assignment': 0,
         '@typescript-eslint/strict-boolean-expressions': 0,
+        'no-underscore-dangle': 0,
       },
     },
     // Jest

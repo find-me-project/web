@@ -33,12 +33,23 @@ export interface AlertType {
   updatedAt?: Date,
 }
 
+export interface LocationCoordinatesType {
+  longitude: number,
+  latitude: number,
+}
+
 export interface AlertStateType {
+  location?: LocationCoordinatesType,
   list?: AlertType[],
+  selectedItem?: AlertType,
+  filterAlertType?: AlertTypeEnum,
 }
 
 const state = (): AlertStateType => ({
+  location: undefined,
   list: undefined,
+  selectedItem: undefined,
+  filterAlertType: undefined,
 });
 
 export default state;

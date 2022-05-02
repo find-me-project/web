@@ -106,5 +106,8 @@
   "INFO": "Informações",
   "LOCATION_DISAPPEARANCE": "Local do desaparecimento",
   "SELECT_LOCATION": "Clique no mapa para selecionar o local",
-  "ADDITIONAL_INFO_OPTIONAL": "Informações adicionais (opcional)"
+  "ADDITIONAL_INFO_OPTIONAL": "Informações adicionais (opcional)",
+  "IMAGE": "Imagem",
+  "NEXT_STEP": "Avançar",
+  "CHANGE_IMAGE": "Alterar imagem"
 }

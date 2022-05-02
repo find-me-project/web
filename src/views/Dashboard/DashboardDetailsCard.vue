@@ -8,9 +8,15 @@
         v-if='item.type === alertType.person'
         :color='isSelected ? `${itemColor} lighten-4` : ""'
       >
-        <v-icon :color='itemColor'>
-          mdi-account
-        </v-icon>
+        <v-img
+          :src='url'
+        >
+          <template #placeholder>
+            <v-icon :color='itemColor'>
+              mdi-account
+            </v-icon>
+          </template>
+        </v-img>
       </v-avatar>
 
       <v-avatar
@@ -38,6 +44,7 @@
 <script>
   import { AlertTypeEnum } from '@/store/modules/alert/module/state';
   import { mapGetters } from 'vuex';
+  import { AlertImageDimension, getImage } from '@/API/AlertImage';
 
   export default {
     name: 'DashboardDetailsCard',
@@ -46,6 +53,11 @@
         type: Object,
         required: true,
       },
+    },
+    data: function () {
+      return {
+        url: undefined,
+      };
     },
     computed: {
       ...mapGetters('alert', [
@@ -61,9 +73,17 @@
         return this.item.type === this.alertType.person ? 'red' : 'indigo';
       },
     },
+    mounted: function () {
+      this.getItemImage();
+    },
     methods: {
       selectItem: function (item) {
         this.$emit('click', item);
+      },
+      getItemImage: async function () {
+        const { data } = await getImage(this.item._id, AlertImageDimension.small);
+
+        this.url = data.url;
       },
     },
   };

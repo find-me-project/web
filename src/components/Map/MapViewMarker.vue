@@ -4,12 +4,17 @@
     @click='selectMarker'
   >
     <l-icon class-name='map-icon-custom-class'>
-      <v-icon
-        large
-        :color='isSelected ? "primary" : itemColor'
-      >
-        mdi-map-marker
-      </v-icon>
+      <v-avatar>
+        <v-img
+          :src='url'
+        >
+          <template #placeholder>
+            <v-icon large :color='isSelected ? "primary" : itemColor'>
+              mdi-map-marker
+            </v-icon>
+          </template>
+        </v-img>
+      </v-avatar>
     </l-icon>
   </l-marker>
 </template>
@@ -21,6 +26,7 @@
   import {
     LMarker, LIcon,
   } from 'vue2-leaflet';
+  import { AlertImageDimension, getImage } from '@/API/AlertImage';
 
   export default {
     name: 'MapViewMarker',
@@ -33,6 +39,11 @@
         type: Object,
         required: true,
       },
+    },
+    data: function () {
+      return {
+        url: undefined,
+      };
     },
     computed: {
       ...mapGetters('alert', [
@@ -48,9 +59,17 @@
         return this.item.type === this.alertType.person ? 'red' : 'indigo';
       },
     },
+    mounted: function () {
+      this.getItemImage();
+    },
     methods: {
       selectMarker: function () {
         this.$emit('click');
+      },
+      getItemImage: async function () {
+        const { data } = await getImage(this.item._id, AlertImageDimension.small);
+
+        this.url = data.url;
       },
     },
   };
